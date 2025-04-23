@@ -4,10 +4,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci --only=production
+RUN npm install --omit=dev
 
 COPY . .
 
-RUN chmod +x index.js
-
-ENTRYPOINT ["./index.js"]
+ENTRYPOINT ["node", "index.js"]
